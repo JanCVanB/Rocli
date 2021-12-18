@@ -12,3 +12,22 @@ Rocli is still in its first design phase.
 
 - Rocli is the best way to build modern CLI applications with [Roc](https://github.com/rtfeldman/roc).
 - Rocli is a modular set of CLI tools for [Roc](https://github.com/rtfeldman/roc).
+
+## TODO
+
+- I/O (stdin/out/err & files, optionally via streams)
+- Complete error handling
+- Command parsing
+- Flag parsing
+- Argument parsing
+- Environment variable parsing
+- Man page generation
+- Autocomplete for shell(s) (Bash, etc.)
+- Config file I/O
+- Subcommand parsing
+- Network requests
+- Alias handling
+- Testing helper module
+- Rocli CLI
+	- Code generation
+	- Testing helper commands?
