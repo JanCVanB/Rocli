@@ -15,7 +15,8 @@ Rocli is still in its first design phase.
 
 ## TODO
 
-- I/O (stdin/out/err & files, optionally via streams)
+- Add implementations for the placeholder types
+- Stream-based file I/O
 - Complete error handling
 - Command parsing
 - Flag parsing
