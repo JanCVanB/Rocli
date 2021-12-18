@@ -1,6 +1,6 @@
 # Rocli
 
-Platform &amp; libraries for building CLIs in [Roc](https://github.com/rtfeldman/roc)
+Platform &amp; libraries for building CLIs in [Roc](https://roc-lang.org)
 
 ## Project status
 
@@ -10,8 +10,8 @@ Rocli is still in its first design phase.
 
 ## Potential goals
 
-- Rocli is the best way to build modern CLI applications with [Roc](https://github.com/rtfeldman/roc).
-- Rocli is a modular set of CLI tools for [Roc](https://github.com/rtfeldman/roc).
+- Rocli is the best way to build modern CLI applications with [Roc](https://roc-lang.org).
+- Rocli is a modular set of CLI tools for [Roc](https://roc-lang.org).
 
 ## TODO
 
