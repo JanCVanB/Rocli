@@ -1,5 +1,5 @@
-interface Arg
-    exposes [ CommandSchema, CommandValue, FlagSchema, FlagValue, PositionalArgumentSchema, PositionalArgumentValue, RawArgs ]
+interface Args
+    exposes [ CommandSchema, parseCommand ]
     imports []
 
 
@@ -25,6 +25,11 @@ FlagValue : {
     wasUsed: Bool,
     schema: FlagSchema }
 
+parseCommand : Str, List CommandSchema -> CommandValue
+parseCommand = \_, _ ->
+    # TODO: Replace this placeholder implementation with a real one.
+    { flags: [], positionalArguments: [], schema: { name: "n", shortName: "s", description: "d", flags: [], positionalArguments: [] }}
+
 PositionalArgumentSchema : {
     name: Str,
     description: Str }
@@ -32,12 +37,3 @@ PositionalArgumentSchema : {
 PositionalArgumentValue : {
     contents: Str,
     schema: PositionalArgumentSchema }
-
-RawArgs : Str
-
-
-# TODO: Use this in test.roc
-# appendHelpFlag : CommandSchema -> CommandSchema
-
-# TODO: Use this in test.roc
-# parseArgs : RawArgs, List CommandSchema -> (Result CommandValue [ NoSchemaMatched ])

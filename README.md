@@ -10,7 +10,6 @@ Rocli is still in its first design phase.
 
 ## TODO
 
-- Platform-agnostic, by returning a record of functions
 - Add implementations for the placeholder types
 - Errors
 - Command parsing
@@ -20,6 +19,7 @@ Rocli is still in its first design phase.
 - Man page generation
 - Subcommand parsing
 - Network requests
+- Loading bars & spinners (How does parallelism work in Roc?)
 - Stream-based file I/O
 - Config file I/O
 - Aliases
