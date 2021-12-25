@@ -1,2 +1,2 @@
 #!/bin/bash
-roc check test.roc 
+roc check test.broken.roc 
