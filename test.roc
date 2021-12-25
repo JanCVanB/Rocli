@@ -1,31 +1,18 @@
 #!/usr/bin/env roc
 
 app "test"
-    packages { pf: "./platform" }
-    imports [ pf.Context, pf.File, pf.Stream, pf.Task ]
+    packages { pf: "./roc/examples/cli/platform" }
+    imports [ Rocli, pf.Stdout, pf.Task ]
     provides [ main ] to pf
 
 
-# TODO: Solve `roc check` errors (I must be misunderstanding `Task.await` somehow).
-# TODO: Use all exposed platform types in main, to improve design testing with `roc check`.
-# TODO: Simplify the exposed platform types, to allow more beautiful code in main.
-main : Context.Context -> Task.Task {} []
-main = \{ envVars, stderr, stdout } ->
-    inputFilePath = "./path/to/input_file"
-    envVarsSummary = Str.joinWith (List.map envVars (\envVar ->
-        key = envVar.key
-        value = envVar.value
-        "    \(key)=\(value)")) "\n"
-    _ <- Task.await (Stream.write stderr "Env vars:\n\(envVarsSummary)")
-    i <- Task.await (File.readFile inputFilePath)
-    when i is
-        Err _ -> Stream.write stderr "Bad input file path: \(inputFilePath)"
-        Ok inputValue ->
-            outputValue = "Computing the output from the input..."
-            outputFilePath = "./path/to/output_file"
-            o <- Task.await (File.writeFile outputFilePath outputValue)
-            when o is
-                Err _ ->
-                    Stream.write stderr "Bad output file"
-                Ok input ->
-                    Stream.write stdout "Success!"
+main : Task.Task {} *
+main =
+    _ <- Task.await (Stdout.line "")
+    command1 = { name: "Command 1", shortName: "c1", description: "This is command #1.", flags: [], positionalArguments: [] }
+    command2 = { name: "Command 2", shortName: "c2", description: "This is command #2.", flags: [], positionalArguments: [] }
+    schemas = [command1, command2]
+    # TODO: This is blocked by https://github.com/rtfeldman/roc/issues/2279
+    value = Rocli.parseCommand "command2 arg1 arg2" schemas
+    help = Rocli.constructHelp value.schema
+    Stdout.line help
